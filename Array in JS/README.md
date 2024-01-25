@@ -30,3 +30,94 @@ var removeElement = function(nums, val) {
     return left;
 };
 ```
+## 80. Remove Duplicates from Sorted Array II
+### Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.Input: nums = [1,1,1,2,2,3]
+Output: 5, nums = [1,1,2,2,3,_]
+
+```javaScript
+var removeDuplicates = function(nums) {
+    let count = 1;
+    let index = 1;
+
+    for(let i=1; i<nums.length; i++) {
+        if(nums[i] === nums[i-1]) {
+            count ++;
+        }else{
+            count = 1;
+        }
+        if(count <= 2) {
+            nums[index++] = nums[i]; 
+        }
+    }
+    return index;
+};
+```
+
+## 169. Majority Element
+### Given an array nums of size n, return the majority element. The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+```javaScript
+var removeDuplicates = function(nums) {
+    let count = 1;
+    let index = 1;
+
+    for(let i=1; i<nums.length; i++) {
+        if(nums[i] === nums[i-1]) {
+            count ++;
+        }else{
+            count = 1;
+        }
+        if(count <= 2) {
+            nums[index++] = nums[i]; 
+        }
+    }
+    return index;
+};
+```
+
+## 189. Rotate Array
+### Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+``` javaScript
+var rotate = function(nums, k) {
+     k = k % nums.length;
+
+    for(let i = 0; i<k; i++) {
+        let lastElement = nums.pop();
+        nums.unshift(lastElement);
+    }
+};
+```
+
+### This code first reverses the entire array, then reverses the first k elements, and finally reverses the remaining elements. This effectively rotates the array to the right by k positions in-place and with O(1) extra space.
+``` javaScript
+var rotate = function(nums, k) {
+    k = k % nums.length;
+
+    // Reverse the entire array
+    reverseArray(nums, 0, nums.length - 1);
+
+    // Reverse the first k elements
+    reverseArray(nums, 0, k - 1);
+
+    // Reverse the remaining elements
+    reverseArray(nums, k, nums.length - 1);
+};
+// Helper function to reverse the elements of the array in-place
+function reverseArray(nums, start, end) {
+    while (start < end) {
+        let temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        start++;
+        end--;
+    }
+}
+```
