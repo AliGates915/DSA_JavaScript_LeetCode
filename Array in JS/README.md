@@ -520,6 +520,7 @@ console.log(romanToInt("LVIII")); // Output: 58
 console.log(romanToInt("MCMXCIV")); // Output: 1994
 ```
 
+Roman to Integer
 ``` javaScript
 // Define a function getVal to get the integer value of a Roman numeral character
 var getVal = function(ch) {
@@ -534,6 +535,7 @@ var getVal = function(ch) {
         default: return 0; // Default case returns 0 for unknown characters
     }
 }
+
 
 // Define the main function romanToInt to convert a Roman numeral string to an integer
 var romanToInt = function(s) {
@@ -560,3 +562,180 @@ console.log(romanToInt("MCMXCIV")); // Output: 1994
 
 ```
 
+
+12. Integer to Roman
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+
+``` javaScript
+ class Solution {
+    intToRoman(num) {
+        let res = "";
+        let symbols = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 
+		'IV', 'I'];
+        let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+
+     
+	 for (let i = 0; num !== 0; i++) {
+            while (num >= values[i]) {
+                num -= values[i];
+                res += symbols[i];
+            }
+        }
+        return res;
+    }
+}
+
+const solution = new Solution();
+console.log(solution.intToRoman(3549)); // Output: "MMMDXLIX"	
+```
+58. Length of the Last World
+Given a string s consisting of words and spaces, return the length of the last word/ in the string.
+
+A word is a maximal /
+substring//
+ consisting of non-space characters only.
+
+Example 1:
+
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
+
+``` javaScript
+var lengthOfLastWord = function(s) {
+    let n = s.length - 1;
+    let i = n;
+    while (n >= 0 && s[n] === ' ') {
+        n--;
+    }
+    if (n < 0) {
+        return 0;
+    }
+    let count = 0;
+    while (n >= 0 && s[n] !== ' ') {
+       count++;
+       n--;
+    }
+    return count;
+};
+
+// Test cases
+console.log(lengthOfLastWord("Hello World")); // Output: 5
+console.log(lengthOfLastWord("Hello World   ")); // Output: 5
+console.log(lengthOfLastWord("a ")); // Output: 1
+
+```
+14. Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+Example 1:
+
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+https://www.youtube.com/watch?v=wtOQaovlvhY
+
+``` javaScript
+function longestCommonPrefix(strs) {
+    if (strs.length === 0) return "";
+
+    // Sort the array
+    strs.sort();
+    
+    // Get the first and last strings
+    let first = strs[0];
+    let last = strs[strs.length - 1];
+
+    let res = "";
+    
+    // Start to compare
+    for (let i = 0; i < first.length; i++) {
+        if (first[i] !== last[i]) {
+            break;
+        }
+        res += first[i];
+    }
+    return res;
+}
+
+// Test the function
+const strs = ["flower", "flow", "flight"];
+console.log(longestCommonPrefix(strs)); // Output: "fl"
+```
+
+151. Reverse words in a String
+https://www.youtube.com/watch?v=wBxrhWq4L-E
+
+Given an input string s, reverse the order of the words.
+A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+Return a string of the words in reverse order concatenated by a single space.
+Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+
+Example 1:
+
+Input: s = "the sky is blue"
+Output: "blue is sky the"
+
+``` javaScript
+var reverseWords = function(s) {
+    let n = s.length;
+    let i = 0, j = n - 1;
+    let ans = "";
+  
+    // Trim leading spaces
+    while (s[i] === ' ') {
+        i++;
+    }
+  
+    // Trim trailing spaces
+    while (s[j] === ' ') {
+        j--;
+    }
+  
+    let wordStart = i;
+  
+    while (i <= j) {
+        if (s[i] !== ' ') {
+            let wordEnd = i;
+            // Find the end of the current word
+            while (wordEnd <= j && s[wordEnd] !== ' ') {
+                wordEnd++;
+            }
+            // Extract the current word
+            let word = s.substring(wordStart, wordEnd);
+            // If there's already content in 'ans', add a space before adding the word
+            if (ans.length > 0) {
+                ans = word + ' ' + ans;
+            } else {
+                ans = word;
+            }
+            // Move 'i' to the next word's start
+            i = wordEnd;
+            // Update 'wordStart' for the next word
+            while (i <= j && s[i] === ' ') {
+                i++;
+            }
+            wordStart = i;
+        } else {
+            // Skip consecutive spaces
+            while (i <= j && s[i] === ' ') {
+                i++;
+            }
+        }
+    }
+    return ans;
+};
+
+// Test the function
+console.log(reverseWords("the sky is blue")); // Output: "blue is sky the"
+```
