@@ -44,8 +44,43 @@ num = Math.abs(nums[2]) = Math.abs(3) = 3<br>
 nums[3] is -4, which is negative.<br>
 Since nums[num] is negative, we have found a duplicate number (3).<br>
 Set s = num = 3 and break out of the loop.<br>
-The function returns the first duplicate number it finds, which is 3. Therefore, the function returns 3.<br>
+The function returns the first duplicate number it finds, which is 3. Therefore, the function returns 3.<be>
 
+### Let's run the code iteration by iteration for the input list [1, 3, 4, 2, 2]:
+Initialization:
+nums = [1, 3, 4, 2, 2]<br>
+s = 0<br>
+Iteration 1:<br>
+i = 0<br>
+num = Math.abs(nums[i]) = Math.abs(nums[0]) = 1<br>
+Check the element at index 1: nums[num] = nums[1] = 3<br>
+The element is positive, so negate it: nums[1] = -3<br>
+Updated nums = [1, -3, 4, 2, 2]<br>
+Iteration 2:<br>
+i = 1<br>
+num = Math.abs(nums[i]) = Math.abs(nums[1]) = 3<br>
+Check the element at index 3: nums[num] = nums[3] = 2<br>
+The element is positive, so negate it: nums[3] = -2<br>
+Updated nums = [1, -3, 4, -2, 2]<br>
+Iteration 3:<br>
+i = 2<br>
+num = Math.abs(nums[i]) = Math.abs(nums[2]) = 4<br>
+Check the element at index 4: nums[num] = nums[4] = 2<br>
+The element is positive, so negate it: nums[4] = -2<br>
+Updated nums = [1, -3, 4, -2, -2]<br>
+Iteration 4:<br>
+i = 3<br>
+num = Math.abs(nums[i]) = Math.abs(nums[3]) = 2<br>
+Check the element at index 2: nums[num] = nums[2] = 4<br>
+The element is positive, so negate it: nums[2] = -4<br>
+Updated nums = [1, -3, -4, -2, -2]<br>
+Iteration 5:<br>
+i = 4<br>
+num = Math.abs(nums[i]) = Math.abs(nums[4]) = 2<br>
+Check the element at index 2: nums[num] = nums[2] = -4<br>
+Since the element is already negative, it indicates a duplicate at index 2 (i.e., the value 2 is a duplicate).<br>
+Set s = num = 2<br>
+The function breaks the loop and returns s = 2.<br>
 ## 27. Remove Element.
 ### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
 Input: nums = [3,2,2,3], val = 3 <br>
