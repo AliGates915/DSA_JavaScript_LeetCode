@@ -8,3 +8,11 @@ https://docs.google.com/spreadsheets/d/1MGVBJ8HkRbCnU6EQASjJKCqQE8BWng4qgL0n3vCV
 ### Video Link for Preparation: 
 https://www.youtube.com/watch?v=yTujhdqgCzo 
 
+
+For Pull Request:
+``` bash 
+git pull origin main
+git add .
+git commit -m "Merge changes from origin/main"
+git push origin main
+```
