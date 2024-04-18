@@ -782,3 +782,30 @@ var candy = function(ratings) {
     return sum;
 };
 ```
+## 392. Is Subsequence
+### Example 1:
+Input: s = "abc", t = "ahbgdc"
+Output: true
+### Example 2:
+Input: s = "axc", t = "ahbgdc"
+Output: false
+``` javaScript
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int i=0;
+        int j=0;
+
+        while(i < s.size() && j < t.size()) {
+            if(s[i] == t[j]){
+                i++;
+                j++;
+            }else{
+                j++;
+            }
+        }
+        return (i == s.size());
+    }
+};
+```
+
