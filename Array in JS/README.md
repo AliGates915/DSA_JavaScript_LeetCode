@@ -12,6 +12,17 @@ Input: nums = [3,1,3,4,2] Output: 3
 Input: nums = [3,3,3,3,3] Output: 3
 ## Code :
 ```javaScript
+
+var findDuplicate = function(nums) {
+    let s = nums[0];
+    let f = nums[0];
+    do{
+        s = nums[s];
+        f = nums[nums[f]]; 
+    }while(s !== f);
+    return s;
+};
+
 var findDuplicate = function(nums) {
     let s = 0;
     for (let i = 0; i < nums.length; i++) {
