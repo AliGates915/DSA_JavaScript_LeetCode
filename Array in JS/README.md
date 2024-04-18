@@ -1,12 +1,57 @@
 # Array DSA LeetCode Questions Important for Interviews 
 
+## 287. Find the Duplicate Number 
+Medium
+### Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive. There is only one repeated number in nums, return this repeated number.
+You must solve the problem without modifying the array nums, using only constant extra space.
+### Example 1:
+Input: nums = [1,3,4,2,2] Output: 2
+### Example 2:
+Input: nums = [3,1,3,4,2] Output: 3
+### Example 3:
+Input: nums = [3,3,3,3,3] Output: 3
+## Code :
+```javaScript
+var findDuplicate = function(nums) {
+    let s = 0;
+    for (let i = 0; i < nums.length; i++) {
+        let num = Math.abs(nums[i]);
+        if (nums[num] < 0) {
+            s = num;
+            break;
+        } else {
+            nums[num] *= -1;
+        }
+    }
+    return s;
+};
+```
+### Here's the execution of the function step by step:
+Initial array: [3,1,3,4,2]
+Start with s = 0.
+i = 0:
+num = Math.abs(nums[0]) = Math.abs(3) = 3
+nums[3] is 4, which is positive.
+Mark it negative: nums[3] *= -1 -> nums[3] = -4
+Updated array: [3,1,3,-4,2]
+i = 1:
+num = Math.abs(nums[1]) = Math.abs(1) = 1
+nums[1] is 1, which is positive.
+Mark it negative: nums[1] *= -1 -> nums[1] = -1
+Updated array: [3,-1,3,-4,2]
+i = 2:
+num = Math.abs(nums[2]) = Math.abs(3) = 3
+nums[3] is -4, which is negative.
+Since nums[num] is negative, we have found a duplicate number (3).
+Set s = num = 3 and break out of the loop.
+The function returns the first duplicate number it finds, which in this case is 3. Therefore, the function returns 3.
+
 ## 27. Remove Element.
-### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
 Input: nums = [3,2,2,3], val = 3 <br>
 Output: 2, nums = [2,2,_,_]
 
-### 1st Approach :
-
+## 1st Approach :
 ```javaScript
 var removeElement = function(nums, val) {
     for(let i = nums.length; i>=0; i--) {
@@ -16,7 +61,7 @@ var removeElement = function(nums, val) {
     }
 }; 
 ```
-### 2nd Approach :
+## 2nd Approach :
 The best approach for removing elements from an array with less time and space complexity is to use a two-pointer approach. This approach doesn't require modifying the array during the traversal, and it has a time complexity of O(n), where n is the length of the array, and a space complexity of O(1).
 ```javaScript
 var removeElement = function(nums, val) {
@@ -31,7 +76,8 @@ var removeElement = function(nums, val) {
 };
 ```
 ## 80. Remove Duplicates from Sorted Array II
-### Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.Input: nums = [1,1,1,2,2,3]
+### Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.
+Input: nums = [1,1,1,2,2,3]
 Output: 5, nums = [1,1,2,2,3,_]
 
 ```javaScript
