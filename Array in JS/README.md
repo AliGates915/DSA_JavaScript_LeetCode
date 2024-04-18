@@ -27,24 +27,24 @@ var findDuplicate = function(nums) {
 };
 ```
 ### Here's the execution of the function step by step:
-Initial array: [3,1,3,4,2]
-Start with s = 0.
-i = 0:
-num = Math.abs(nums[0]) = Math.abs(3) = 3
-nums[3] is 4, which is positive.
-Mark it negative: nums[3] *= -1 -> nums[3] = -4
-Updated array: [3,1,3,-4,2]
-i = 1:
-num = Math.abs(nums[1]) = Math.abs(1) = 1
-nums[1] is 1, which is positive.
-Mark it negative: nums[1] *= -1 -> nums[1] = -1
-Updated array: [3,-1,3,-4,2]
-i = 2:
-num = Math.abs(nums[2]) = Math.abs(3) = 3
-nums[3] is -4, which is negative.
-Since nums[num] is negative, we have found a duplicate number (3).
-Set s = num = 3 and break out of the loop.
-The function returns the first duplicate number it finds, which in this case is 3. Therefore, the function returns 3.
+Initial array: [3,1,3,4,2] <br>
+Start with s = 0.<br>
+i = 0:<br>
+num = Math.abs(nums[0]) = Math.abs(3) = 3<br>
+nums[3] is 4, which is positive.<br>
+Mark it negative: nums[3] *= -1 -> nums[3] = -4<br>
+Updated array: [3,1,3,-4,2] <br>
+i = 1: <br>
+num = Math.abs(nums[1]) = Math.abs(1) = 1<br>
+nums[1] is 1, which is positive.<br>
+Mark it negative: nums[1] *= -1 -> nums[1] = -1<br>
+Updated array: [3,-1,3,-4,2]<br>
+i = 2:<br>
+num = Math.abs(nums[2]) = Math.abs(3) = 3<br>
+nums[3] is -4, which is negative.<br>
+Since nums[num] is negative, we have found a duplicate number (3).<br>
+Set s = num = 3 and break out of the loop.<br>
+The function returns the first duplicate number it finds, which is 3. Therefore, the function returns 3.<br>
 
 ## 27. Remove Element.
 ### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
