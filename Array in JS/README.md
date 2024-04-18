@@ -51,36 +51,37 @@ Initialization:
 nums = [1, 3, 4, 2, 2]<br>
 s = 0<br>
 Iteration 1:<br>
-i = 0<br>
-num = Math.abs(nums[i]) = Math.abs(nums[0]) = 1<br>
-Check the element at index 1: nums[num] = nums[1] = 3<br>
-The element is positive, so negate it: nums[1] = -3<br>
-Updated nums = [1, -3, 4, 2, 2]<br>
-Iteration 2:<br>
-i = 1<br>
-num = Math.abs(nums[i]) = Math.abs(nums[1]) = 3<br>
-Check the element at index 3: nums[num] = nums[3] = 2<br>
-The element is positive, so negate it: nums[3] = -2<br>
-Updated nums = [1, -3, 4, -2, 2]<br>
-Iteration 3:<br>
-i = 2<br>
-num = Math.abs(nums[i]) = Math.abs(nums[2]) = 4<br>
-Check the element at index 4: nums[num] = nums[4] = 2<br>
-The element is positive, so negate it: nums[4] = -2<br>
-Updated nums = [1, -3, 4, -2, -2]<br>
-Iteration 4:<br>
-i = 3<br>
-num = Math.abs(nums[i]) = Math.abs(nums[3]) = 2<br>
-Check the element at index 2: nums[num] = nums[2] = 4<br>
-The element is positive, so negate it: nums[2] = -4<br>
-Updated nums = [1, -3, -4, -2, -2]<br>
-Iteration 5:<br>
-i = 4<br>
-num = Math.abs(nums[i]) = Math.abs(nums[4]) = 2<br>
-Check the element at index 2: nums[num] = nums[2] = -4<br>
-Since the element is already negative, it indicates a duplicate at index 2 (i.e., the value 2 is a duplicate).<br>
-Set s = num = 2<br>
-The function breaks the loop and returns s = 2.<br>
+``` javascript i = 0
+num = Math.abs(nums[i]) = Math.abs(nums[0]) = 1
+Check the element at index 1: nums[num] = nums[1] = 3
+The element is positive, so negate it: nums[1] = -3
+Updated nums = [1, -3, 4, 2, 2]
+Iteration 2:
+i = 1
+num = Math.abs(nums[i]) = Math.abs(nums[1]) = 3
+Check the element at index 3: nums[num] = nums[3] = 2
+The element is positive, so negate it: nums[3] = -2
+Updated nums = [1, -3, 4, -2, 2]
+Iteration 3:
+i = 2
+num = Math.abs(nums[i]) = Math.abs(nums[2]) = 4
+Check the element at index 4: nums[num] = nums[4] = 2
+The element is positive, so negate it: nums[4] = -2
+Updated nums = [1, -3, 4, -2, -2]
+Iteration 4:
+i = 3<
+num = Math.abs(nums[i]) = Math.abs(nums[3]) = 2
+Check the element at index 2: nums[num] = nums[2] = 4
+The element is positive, so negate it: nums[2] = -4
+Updated nums = [1, -3, -4, -2, -2]
+Iteration 5:
+i = 4
+num = Math.abs(nums[i]) = Math.abs(nums[4]) = 2
+Check the element at index 2: nums[num] = nums[2] = -4
+Since the element is already negative, it indicates a duplicate at index 2 (i.e., the value 2 is a duplicate).
+Set s = num = 2
+The function breaks the loop and returns s = 2.
+```
 ## 27. Remove Element.
 ### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
 Input: nums = [3,2,2,3], val = 3 <br>
