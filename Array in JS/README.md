@@ -22,77 +22,50 @@ var findDuplicate = function(nums) {
     }while(s !== f);
     return s;
 };
+```
 
-var findDuplicate = function(nums) {
-    let s = 0;
-    for (let i = 0; i < nums.length; i++) {
-        let num = Math.abs(nums[i]);
-        if (nums[num] < 0) {
-            s = num;
-            break;
-        } else {
-            nums[num] *= -1;
+# 75. Sort Colors
+Medium
+### Given an array nums with n objects colored red, white, or blue, sort them in place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+We will use the integers 0, 1, and 2 to represent the colors red, white, and blue, respectively.
+You must solve this problem without using the library's sort function.
+## Example 1:
+Input: nums = [2,0,2,1,1,0]  Output: [0,0,1,1,2,2]
+## Example 2:
+Input: nums = [2,0,1]  Output: [0,1,2]
+
+``` TypeScript
+function sortColors(nums: number[]): void {
+    let l:number = 0;
+    let m:number = 0;
+    let h:number = nums.length - 1;
+
+    //Swap function
+
+    function swap(i:number, j:number) : void {
+        let temp:number = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    while(m <= h) {
+        if(nums[m] === 0) {
+            swap(l,m);
+            l++; m++;
+        }
+        else if(nums[m] === 1) {
+            m++;
+        } 
+        else if(nums[m] === 2) {
+            swap(m,h);
+            h--;
         }
     }
-    return s;
+    
 };
-```
-### Here's the execution of the function step by step:
-Initial array: [3,1,3,4,2] <br>
-Start with s = 0.<br>
-i = 0:<br>
-num = Math.abs(nums[0]) = Math.abs(3) = 3<br>
-nums[3] is 4, which is positive.<br>
-Mark it negative: nums[3] *= -1 -> nums[3] = -4<br>
-Updated array: [3,1,3,-4,2] <br>
-i = 1: <br>
-num = Math.abs(nums[1]) = Math.abs(1) = 1<br>
-nums[1] is 1, which is positive.<br>
-Mark it negative: nums[1] *= -1 -> nums[1] = -1<br>
-Updated array: [3,-1,3,-4,2]<br>
-i = 2:<br>
-num = Math.abs(nums[2]) = Math.abs(3) = 3<br>
-nums[3] is -4, which is negative.<br>
-Since nums[num] is negative, we have found a duplicate number (3).<br>
-Set s = num = 3 and break out of the loop.<br>
-The function returns the first duplicate number it finds, which is 3. Therefore, the function returns 3.<be>
 
-### Let's run the code iteration by iteration for the input list [1, 3, 4, 2, 2]:
-Initialization:
-nums = [1, 3, 4, 2, 2]<br>
-s = 0<br>
-Iteration 1:<br>
-``` javascript i = 0
-num = Math.abs(nums[i]) = Math.abs(nums[0]) = 1
-Check the element at index 1: nums[num] = nums[1] = 3
-The element is positive, so negate it: nums[1] = -3
-Updated nums = [1, -3, 4, 2, 2]
-Iteration 2:
-i = 1
-num = Math.abs(nums[i]) = Math.abs(nums[1]) = 3
-Check the element at index 3: nums[num] = nums[3] = 2
-The element is positive, so negate it: nums[3] = -2
-Updated nums = [1, -3, 4, -2, 2]
-Iteration 3:
-i = 2
-num = Math.abs(nums[i]) = Math.abs(nums[2]) = 4
-Check the element at index 4: nums[num] = nums[4] = 2
-The element is positive, so negate it: nums[4] = -2
-Updated nums = [1, -3, 4, -2, -2]
-Iteration 4:
-i = 3<
-num = Math.abs(nums[i]) = Math.abs(nums[3]) = 2
-Check the element at index 2: nums[num] = nums[2] = 4
-The element is positive, so negate it: nums[2] = -4
-Updated nums = [1, -3, -4, -2, -2]
-Iteration 5:
-i = 4
-num = Math.abs(nums[i]) = Math.abs(nums[4]) = 2
-Check the element at index 2: nums[num] = nums[2] = -4
-Since the element is already negative, it indicates a duplicate at index 2 (i.e., the value 2 is a duplicate).
-Set s = num = 2
-The function breaks the loop and returns s = 2.
 ```
+
 ## 27. Remove Element.
 ### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
 Input: nums = [3,2,2,3], val = 3 <br>
