@@ -88,6 +88,33 @@ function removeDuplicates(nums: number[]): number {
 };
 ```
 
+# 283. Move Zeroes
+Easy
+### Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+Note that you must do this in-place without making a copy of the array.
+## Example 1:
+Input: nums = [0,1,0,3,12] Output: [1,3,12,0,0]
+## Example 2:
+Input: nums = [0] Output: [0]
+
+```TypeScript
+function moveZeroes(nums: number[]): void {
+  
+  let insertPosition:number = 0;
+
+  for(let i=0; i<nums.length; i++) {
+    if(nums[i] !== 0) {
+        nums[insertPosition++] = nums[i];
+    }
+  }
+  while(insertPosition < nums.length) {
+    nums[insertPosition ++] = 0;
+  }
+};
+```
+
+
+
 ## 27. Remove Element
 ### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
 Input: nums = [3,2,2,3], val = 3  Output: 2, nums = [2,2,_,_]
