@@ -179,6 +179,78 @@ function twoSum(nums: number[], target: number): number[] {
     throw new Error("No two sum solution!")
 };
 ```
+# 974. Subarrays Sum Divisible by K 
+Medium
+### Given an integer array nums and an integer k, return the number of non-empty subarrays that have a sum divisible by k. A subarray is a contiguous part of an array.
+## Example 1:
+Input: nums = [4,5,0,-2,-3,1], k = 5   Output: 7
+Explanation: There are 7 subarrays with a sum divisible by k = 5:
+[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]
+
+``` TypeScript
+function subarraysDivByK(nums: number[], k: number): number {
+  let ans = 0;
+  const map: Map<number, number> = new Map();
+  map.set(0,1);
+  let sum = 0;
+  let rem = 0;
+  for(let i=0; i<nums.length; i++) {
+    sum += nums[i];
+    rem = sum % k;
+    if(rem < 0) {
+        rem += k;
+    }
+    if(map.has(rem)) {
+        ans += map.get(rem)!;
+        map.set(rem, map.get(rem)! + 1);
+    }else{
+        map.set(rem,1);
+    }
+  }
+return ans;
+};
+```
+## Dry Run this line of Code.
+``` 1. Initialize variables:
+   - ans = 0
+   - map = { 0: 1 } (Key: Remainder, Value: Frequency)
+   - sum = 0
+   - rem = 0
+
+2. Loop through the array `nums`:
+   - Iteration 1: nums[0] = 4
+     sum = 4
+     rem = 4 % 5 = 4
+     map = { 0: 1, 4: 1 }
+   - Iteration 2: nums[1] = 5
+     sum = 4 + 5 = 9
+     rem = 9 % 5 = 4
+     map = { 0: 1, 4: 2 }
+     Since rem is already in the map, ans += map.get(4) = 2, ans = 2
+   - Iteration 3: nums[2] = 0
+     sum = 9 + 0 = 9
+     rem = 9 % 5 = 4
+     map = { 0: 1, 4: 3 }
+     Since rem is already in the map, ans += map.get(4) = 3, ans = 5
+   - Iteration 4: nums[3] = -2
+     sum = 9 - 2 = 7
+     rem = 7 % 5 = 2
+     map = { 0: 1, 4: 3, 2: 1 }
+   - Iteration 5: nums[4] = -3
+     sum = 7 - 3 = 4
+     rem = 4 % 5 = 4
+     map = { 0: 1, 4: 4, 2: 1 }
+     Since rem is already in the map, ans += map.get(4) = 4, ans = 9
+   - Iteration 6: nums[5] = 1
+     sum = 4 + 1 = 5
+     rem = 5 % 5 = 0
+     map = { 0: 1, 4: 4, 2: 1, 0: 1 }
+     Since rem is already in the map, ans += map.get(0) = 1, ans = 10
+
+3. Return ans = 10
+
+```
+
 
 @@@@@@ Previous Code @@@@@@@@
 
