@@ -303,8 +303,8 @@ function maxArea(height: number[]): number {
 ```
 # 1423. Maximum Points You Can Obtain from Cards
 Medium
-## There are several cards arranged in a row, and each card has an associated number of points. The points are given in the integer array cardPoints.
-In one step, you can take one card from the beginning or from the end of the row. You have to take exactly k cards. Your score is the sum of the points of the cards you have taken.
+## There are several cards arranged in a row, each with an associated number of points. The points are given in the integer array cardPoints.
+In one step, you can take one card from the beginning or the end of the row. You have to take exactly k cards. Your score is the sum of the points of the cards you have taken.
 Given the integer array cardPoints and the integer k, return the maximum score you can obtain.
 ### Example 1:
 Input: cardPoints = [1,2,3,4,5,6,1], k = 3 Output: 12
@@ -330,11 +330,46 @@ function maxScore(cardPoints: number[], k: number): number {
     return ans;
 };
 ```
+# 88. Merge Sorted Array
+Easy
+### You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+The function should not return the final sorted array, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+## Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3    Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The merge result is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+```pyhton
+def merge(self, nums1, m, nums2, n):
+        i = m - 1
+        j = n - 1
+        k = m + n - 1
+
+        while i >= 0 and j >= 0:
+            if nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                i -= 1
+            else:
+                nums1[k] = nums2[j]
+                j -= 1
+            k -= 1
+    
+        while j >= 0:
+            nums1[k] = nums2[j]
+            j -= 1
+            k -= 1
+```
+
+
+
+
+
 
 @@@@@@ Previous Code @@@@@@@@
 
 ## 27. Remove Element
-### Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
+### Given an integer array of nums and an integer value, remove all occurrences of val in nums in place. The order of the elements may be changed. Then return the number of elements in nums that are not equal to val.
 Input: nums = [3,2,2,3], val = 3  Output: 2, nums = [2,2,_,_]
 
 ## 1st Approach :
@@ -348,7 +383,7 @@ var removeElement = function(nums, val) {
 }; 
 ```
 ## 2nd Approach :
-The best approach for removing elements from an array with less time and space complexity is to use a two-pointer approach. This approach doesn't require modifying the array during the traversal, and it has a time complexity of O(n), where n is the length of the array, and a space complexity of O(1).
+The best approach for removing elements from an array with less time and space complexity is to use a two-pointer approach. This approach doesn't require modifying the array during the traversal, and it has a time complexity of O(n), where n is the length of the array and a space complexity of O(1).
 ```javaScript
 var removeElement = function(nums, val) {
     let left = 0;
