@@ -133,7 +133,6 @@ function maxProfit(prices: number[]): number {
         profit = Math.max(curr_profit,profit);
     }
   }  
-
   return profit;
 };
 ```
@@ -158,6 +157,28 @@ function maxProfit(prices: number[]): number {
     return profit;
 };
 ```
+# 560. Subarray Sum Equals K
+Medium 
+### Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k. A subarray is a contiguous non-empty sequence of elements within an array.
+## Example 1:
+Input: nums = [1,1,1], k = 2  Output: 2
+
+```Python3
+def subarraySum(self, nums: List[int], k: int) -> int:
+        from collections import defaultdict
+        m = defaultdict(int)
+        count = 0
+        sum_val = 0
+        for num in nums:
+            sum_val += num
+            if sum_val == k:
+                count += 1
+            if sum_val - k in m:
+                count += m[sum_val - k]
+            m[sum_val] += 1
+        return count  
+```
+
 # 1.Two Sum
 ### Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to the target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.
 ## Example 1:
