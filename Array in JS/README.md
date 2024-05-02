@@ -1,5 +1,47 @@
 # Array DSA LeetCode Questions Important for Interviews 
 
+## 54. Spiral Matrix
+Medium
+### Given an m x n matrix, return all matrix elements in spiral order.
+## Example 1:
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]     Output: [1,2,3,6,9,8,7,4,5]
+```TypeScript
+function spiralOrder(matrix: number[][]): number[] {
+        if (!matrix.length) return [];
+        const result: number[] = [];
+        let rowBegin = 0,
+        rowEnd = matrix.length - 1,
+        colBegin = 0,
+        colEnd = matrix[0].length - 1;
+        while (rowBegin <= rowEnd && colBegin <= colEnd) {
+            // Traverse Right
+            for (let j = colBegin; j <= colEnd; j++) {
+                result.push(matrix[rowBegin][j]);
+            }
+            rowBegin++;
+            // Traverse Down
+            for (let i = rowBegin; i <= rowEnd; i++) {
+                result.push(matrix[i][colEnd]);
+            }
+            colEnd--;
+            // Traverse Left
+            if (rowBegin <= rowEnd) {
+                for (let j = colEnd; j >= colBegin; j--) {
+                    result.push(matrix[rowEnd][j]);
+                }
+                rowEnd--;
+            }
+            // Traverse Up
+            if (colBegin <= colEnd) {
+                for (let i = rowEnd; i >= rowBegin; i--) {
+                    result.push(matrix[i][colBegin]);
+                }
+                colBegin++;
+            }
+        }
+        return result;
+};
+```
 ## 287. Find the Duplicate Number 
 Medium
 ### Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive. There is only one repeated number in nums, return this repeated number.
