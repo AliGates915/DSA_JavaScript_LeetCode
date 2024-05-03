@@ -1,5 +1,54 @@
 # Array DSA LeetCode Questions Important for Interviews 
 
+# 79. Word Search
+Medium
+## Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"      Output: true
+``` Java
+class Solution {
+
+    int[][] dirs = new int[][] {{0,1}, {0,-1}, {1,0}, {-1,0}};
+    
+    private boolean isValid(int x, int y, int m, int n) {
+        return x >= 0 && y >= 0 && x < m && y < n;
+    }
+
+    private boolean dfs(char[][] board, int x, int y, int m, int n, String word, int index, boolean[][] visited) {
+        if(index == word.length()) {
+            return true;
+        }
+        if(!isValid(x, y, m, n) || visited[x][y] || board[x][y] != word.charAt(index)) {
+            return false;
+        }
+        visited[x][y] = true;
+        for(int[] dir : dirs) {
+            int newX = x + dir[0];
+            int newY = y + dir[1];
+            if(dfs(board, newX, newY, m, n, word, index + 1, visited)) {
+                return true;
+            }
+        }
+        visited[x][y] = false; // Reset the visited status when backtracking
+        return false;
+    }
+
+    public boolean exist(char[][] board, String word) {
+        int m = board.length, n = board[0].length;
+        boolean ans = false;
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                boolean[][] visited = new boolean[m][n];
+                if(board[i][j] == word.charAt(0)) {
+                    ans = ans || dfs(board, i, j, m, n, word, 0, visited);
+                    if(ans) return true;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
 ## 54. Spiral Matrix
 Medium
 ### Given an m x n matrix, return all matrix elements in spiral order.
