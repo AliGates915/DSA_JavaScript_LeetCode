@@ -1,5 +1,31 @@
 # Array DSA LeetCode Questions Important for Interviews 
 
+# 20. Valid Parentheses
+Easy
+## Example 1:
+Input: s = "()"    Output: true
+## Example 2:
+Input: s = "()[]{}"  Output: true
+
+https://leetcode.com/problems/valid-parentheses/
+```TypeScript
+function isValid(s: string): boolean {
+      const stack: string[] = [];
+
+        for (const c of s) {
+            if (c === '(') {
+                stack.push(')');
+            } else if (c === '{') {
+                stack.push('}');
+            } else if (c === '[') {
+                stack.push(']');
+            } else if (stack.length === 0 || stack.pop() !== c) {
+                return false;
+            }
+        }
+    return stack.length === 0;
+};
+```
 # 79. Word Search
 Medium
 ## Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"      Output: true
