@@ -1,5 +1,42 @@
 # Top Interviews LeetCode String Questions 
 
+# 28. Find the Index of the First Occurrence in a String
+Easy 
+## Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+### Example 1:
+Input: haystack = "sadbutsad", needle = "sad"   Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+### Example 2:
+Input: haystack = "leetcode", needle = "leeto"    Output: -1
+Explanation: "leeto" did not occur in "leetcode", so we return -1.
+
+```TypeScript
+function strStr(haystack: string, needle: string): number {
+    let n1 = haystack.length;
+    let n2 = needle.length;
+
+    if(n2 > n1) {
+        return -1;
+    }
+    let j = 0, i = 0, start = 0;
+    while(i < n1  && j < n2) {
+        if(haystack[i] === needle[j]){
+            if(i-start+1 === n2) {
+                return start;
+            }
+            i++;
+            j++;
+        }
+        else{
+            j = 0;
+            start ++;
+            i = start;
+        }
+    }
+    return -1;
+};
+```
 # 680. Valid Palindrome II
 Easy
 ## Example 1:
