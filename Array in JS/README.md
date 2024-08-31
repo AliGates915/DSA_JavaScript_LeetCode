@@ -131,13 +131,23 @@ Input: nums = [3,3,3,3,3] Output: 3
 ```javaScript
 
 var findDuplicate = function(nums) {
-    let s = nums[0];
-    let f = nums[0];
-    do{
-        s = nums[s];
-        f = nums[nums[f]]; 
-    }while(s !== f);
-    return s;
+    let slow = nums[0];
+    let fast = nums[0];
+
+    // Phase 1: Finding the intersection point of the two runners.
+    do {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    } while (slow !== fast);
+
+    // Phase 2: Finding the entrance to the cycle.
+    slow = nums[0];
+    while (slow !== fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
+
+    return slow;
 };
 ```
 
