@@ -149,6 +149,19 @@ var findDuplicate = function(nums) {
 
     return slow;
 };
+
+function findDuplicate(nums) {
+    const map = new Map();
+
+    for (let num of nums) {
+        if (map.has(num)) {
+            return num;
+        }
+        map.set(num, true);
+    }
+
+    return -1; // Return -1 if no duplicate is found (although the problem guarantees a duplicate exists)
+}
 ```
 
 # 75. Sort Colors
